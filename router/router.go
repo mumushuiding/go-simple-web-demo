@@ -13,5 +13,5 @@ func init() {
 	setMux()
 }
 func setMux() {
-	Mux.HandleFunc("/api/v1/workdiary/index", controller.Index)
+	Mux.HandleFunc("/api/v1/test/index", controller.Index)
 }
