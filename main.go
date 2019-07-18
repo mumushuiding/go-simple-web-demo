@@ -14,14 +14,6 @@ import (
 
 var conf = *config.Config
 
-func crossOrigin(h http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", conf.AccessControlAllowOrigin)
-		w.Header().Set("Access-Control-Allow-Methods", conf.AccessControlAllowMethods)
-		w.Header().Set("Access-Control-Allow-Headers", conf.AccessControlAllowHeaders)
-		h(w, r)
-	}
-}
 func main() {
 	mux := router.Mux
 	// 启动数据库连接
