@@ -8,7 +8,7 @@ import (
 
 // Index 首页
 func Index(writer http.ResponseWriter, request *http.Request) {
-	writer.Header().Set("Access-Control-Allow-Origin", "*")
+	fmt.Println(request.Header)
 	fmt.Fprintf(writer, "Hello world!")
 }
 
@@ -22,5 +22,5 @@ func GetToken(request *http.Request) (string, error) {
 		}
 		token = request.Form["token"][0]
 	}
-	return token,nil
+	return token, nil
 }
