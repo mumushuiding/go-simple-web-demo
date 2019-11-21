@@ -8,7 +8,6 @@ import (
 
 // Index 首页
 func Index(writer http.ResponseWriter, request *http.Request) {
-	fmt.Println(request.Header)
 	fmt.Fprintf(writer, "Hello world!")
 }
 
