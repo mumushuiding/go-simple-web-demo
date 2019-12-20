@@ -22,14 +22,14 @@ type Model struct {
 // 配置
 var conf = *config.Config
 
-// Setup 初始化一个db连接
-func Setup() {
+// SetupDB 初始化一个db连接
+func SetupDB() {
 	var err error
-	log.Println("数据库初始化！！")
 	db, err = gorm.Open(conf.DbType, fmt.Sprintf("%s:%s@(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", conf.DbUser, conf.DbPassword, conf.DbHost, conf.DbPort, conf.DbName))
 	if err != nil {
 		log.Fatalf("数据库连接失败 err: %v", err)
 	}
+	log.Println("启动数据库连接！！")
 	// 启用Logger，显示详细日志
 	mode, _ := strconv.ParseBool(conf.DbLogMode)
 
