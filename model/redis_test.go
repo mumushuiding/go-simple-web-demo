@@ -14,7 +14,7 @@ type client interface {
 	// HExists 判断是否存在
 	HExists(key, field string) *redis.BoolCmd
 	// HMset 设置值
-	HMSet(key string, fields map[string]interface{}) *redis.StatusCmd
+	HMSet(key string, values ...interface{}) *redis.BoolCmd
 	// HMGet 获取值
 	HMGet(key string, fields ...string) *redis.SliceCmd
 	// HScan 分页查询

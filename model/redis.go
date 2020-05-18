@@ -21,7 +21,7 @@ type client interface {
 	// HExists 判断是否存在
 	HExists(key, field string) *redis.BoolCmd
 	// HMset 设置值
-	HMSet(key string, fields map[string]interface{}) *redis.StatusCmd
+	HMSet(key string, values ...interface{}) *redis.BoolCmd
 	// HMGet 获取值
 	HMGet(key string, fields ...string) *redis.SliceCmd
 	// HScan 分页查询
@@ -45,7 +45,6 @@ func SetRedis() {
 	log.Println("启动redis")
 	if conf.RedisCluster == "true" {
 		// clusterIsOpen = true
-		RedisCli = new(redis.ClusterClient)
 		RedisCli = redis.NewClusterClient(&redis.ClusterOptions{
 			Addrs:    []string{conf.RedisHost + ":" + conf.RedisPort},
 			Password: conf.RedisPassword,
@@ -58,7 +57,6 @@ func SetRedis() {
 		}
 
 	} else {
-		RedisCli = new(redis.Client)
 		RedisCli = redis.NewClient(&redis.Options{
 			Addr:     conf.RedisHost + ":" + conf.RedisPort,
 			Password: conf.RedisPassword,

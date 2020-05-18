@@ -43,6 +43,22 @@ func goMain() error {
 	if err != nil {
 		return err
 	}
+	// 监测内存
+
+	isMemPprof, _ := strconv.ParseBool(conf.SaveHeapProfile)
+	if isMemPprof {
+		// go func() {
+		// 	s, _ := strconv.Atoi(conf.SaveHeapProfileTimePeriod)
+		// 	log.Printf("每%d秒生成一个内存使用情况图\n", s)
+		// 	time.Sleep(time.Duration(s) * time.Second)
+		// 	saveHeapProfile()
+		// }()
+		log.Printf("pprof监听6060端口,打开网址：http://localhost:6060/debug/pprof/  查看内存CPU使用情况\n")
+		go func() {
+			http.ListenAndServe("localhost:6060", nil)
+		}()
+	}
+
 	// 创建server服务
 	server := &http.Server{
 		Addr:           fmt.Sprintf(":%s", conf.Port),

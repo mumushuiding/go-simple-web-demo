@@ -18,6 +18,7 @@
   "TLSOpen": "false",
   "TLSCrt": "server.crt",
   "TLSKey": "server.key",
+  "SaveHeapProfile":"true",
   "AccessControlAllowOrigin": "*",
   "AccessControlAllowHeaders": "*",
   "AccessControlAllowMethods": "POST, GET, PUT, OPTIONS, DELETE, PATCH"

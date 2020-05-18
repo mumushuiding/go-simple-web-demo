@@ -35,6 +35,10 @@ type Configuration struct {
 	AccessControlAllowOrigin  string
 	AccessControlAllowHeaders string
 	AccessControlAllowMethods string
+	// 内存监测
+	SaveHeapProfile string
+	// 内存监测间隔，单位秒
+	SaveHeapProfileTimePeriod string
 }
 
 // Config 数据库配置
